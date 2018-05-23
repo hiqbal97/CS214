@@ -1,0 +1,16 @@
+WorkloadCaseE:
+
+Calls malloc to ptr to malloc once and then free, then taking the same ptr and mallocing with incrementing bytes up to 150.
+
+The reason we chose to this, to see if malloc and free can allocate and then free, without any errors, the same pointer while increasing the amount of allocation each time.
+
+WorkloadCaseF: 
+
+Calls malloc 150 times for 1 byte then stores the pointers in an array. After it stores the pointer in array it frees the pointers randomly. 
+We included this WorkloadCaseF in our testcases because we wanted to test if our malloc could debug efficiently which it did. 
+We realized if the pointer is null we shouldn't free it. This workload causes our error statement "HELP THE POINTER IS NULL" to go off 
+consistently. Because of this error statement going off we can see the pointer should not be free and adds to the run time of the whole workload.
+Compared to the other workloads, A,B,C,D, and E, WorkloadCaseF has a significantly hire runtime due to the error statements going off and
+the random freeing of the pointers.
+
+

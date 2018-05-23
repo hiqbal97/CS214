@@ -1,0 +1,155 @@
+Case 1: Huge Book Text File within directory
+
+input: ./invertedIndex test.xml testbookdir
+output: everything was correctly indexed
+
+Case 2: Check if override works and if it works with a Directory/File that doesn't exist
+
+input: ./invertedIndex test.xml notexistdir
+output: 
+test.xml already exists. Enter y to override.
+y
+Directory/File doesn't exist
+
+
+Case 3: File/directory is an empty file/directory 
+
+input: ./invertedIndex test.xml emptydir
+output: 
+<?xml version="1.0" encoding="UTF-8"?>
+<fileIndex>
+</fileIndex>
+
+Case 4: Override works and overrwrites with something that exists
+
+input: ./invertedIndex test.xml adir
+output:
+test.xml already exists. Enter y to override.
+y
+<?xml version="1.0" encoding="UTF-8"?>
+<fileIndex>
+        <word text="a">
+                <file name="boo">2</file>
+                <file name="baa">1</file>
+        </word>
+        <word text="baa">
+                <file name="baa">1</file>
+        </word>
+        <word text="boo">
+                <file name="boo">2</file>
+        </word>
+        <word text="cat">
+                <file name="baa">1</file>
+        </word>
+        <word text="dog">
+                <file name="boo">2</file>
+        </word>
+        <word text="named">
+                <file name="boo">4</file>
+                <file name="baa">1</file>
+        </word>
+</fileIndex>
+
+Case 5: Regular Directory test with no ovverride
+
+input: ./invertedIndex test2.xml adir
+output:
+<?xml version="1.0" encoding="UTF-8"?>
+<fileIndex>
+        <word text="a">
+                <file name="boo">2</file>
+                <file name="baa">1</file>
+        </word>
+        <word text="baa">
+                <file name="baa">1</file>
+        </word>
+        <word text="boo">
+                <file name="boo">2</file>
+        </word>
+        <word text="cat">
+                <file name="baa">1</file>
+        </word>
+        <word text="dog">
+                <file name="boo">2</file>
+        </word>
+        <word text="named">
+                <file name="boo">4</file>
+                <file name="baa">1</file>
+        </word>
+</fileIndex>
+
+Case 6: Text file
+input: ./invertedIndex test.xml test.txt
+output:
+<?xml version="1.0" encoding="UTF-8"?>
+<fileIndex>
+        <word text="a">
+                <file name="test.txt">1</file>
+        </word>
+        <word text="boo">
+                <file name="test.txt">1</file>
+        </word>
+        <word text="dog">
+                <file name="test.txt">1</file>
+        </word>
+        <word text="named">
+                <file name="test.txt">2</file>
+        </word>
+</fileIndex>
+
+Case 7: Treating directory as a text file
+
+input: ./invertedIndex test.xml adir/boo
+output:
+<?xml version="1.0" encoding="UTF-8"?>
+<fileIndex>
+        <word text="a">
+                <file name="boo">1</file>
+        </word>
+        <word text="boo">
+                <file name="boo">1</file>
+        </word>
+        <word text="dog">
+                <file name="boo">1</file>
+        </word>
+        <word text="named">
+                <file name="boo">2</file>
+        </word>
+</fileIndex>
+
+Case 8: only using .
+input: ./invertedIndex test.xml .
+output: 
+everything was correctly indexed
+
+Case 9: Directory/File that doesn't exist
+input: ./invertedIndex test.xml yellow
+output: 
+Directory/File doesn't exist
+
+Case 10: Directory within a directory
+input: ./invertedIndex test.xml adir/bdir
+output:
+<?xml version="1.0" encoding="UTF-8"?>
+<fileIndex>
+        <word text="a">
+                <file name="baa">1</file>
+                <file name="boo">1</file>
+        </word>
+        <word text="baa">
+                <file name="baa">1</file>
+        </word>
+        <word text="boo">
+                <file name="boo">1</file>
+        </word>
+        <word text="cat">
+                <file name="baa">1</file>
+        </word>
+        <word text="dog">
+                <file name="boo">1</file>
+        </word>
+        <word text="named">
+                <file name="boo">2</file>
+                <file name="baa">1</file>
+        </word>
+</fileIndex>

@@ -1,0 +1,36 @@
+Input: ./client "cs.rutgers.edu" "unrestricted"
+Output:
+ERROR: Not a valid mode
+ERROR: No hostname found: Success
+
+Input: ./client "facebook.com" "transaction"
+Output:
+ERROR: Connection failed
+ERROR: No hostname found: Connection refused
+
+Input: ./client "cs.rutgers.edu" "exclusive"
+Output:
+ERROR: Connection failed
+ERROR: No hostname found: Connection refused
+
+Input: ./client "cs.rutgers.edu" "transaction"
+Output:
+ERROR: Connection failed
+ERROR: No hostname found: Connection refused
+
+Input: ./client "cs.rutgers.edu" "unrestricted"
+Output:
+ERROR: Not a valid mode
+ERROR: No hostname found: Success
+
+Input: ./server "cs.rutgers.edu" "exclusive"
+Output: 
+SOCKET INITALIZATION COMPLETE
+
+Input: ./server "cs.rutgers.edu" "transaction"
+Ouput: 
+SOCKET INITALIZATION COMPLETE
+
+Input: ./server "cs.rutgers.edu" "unrestricted"
+Output:
+SOCKET INITALIZATION COMPLETE
